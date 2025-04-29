@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Set height to full viewport height */
+            display: flex;
+            flex-direction: column; /* Align content vertically */
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Set background color */
+            font-family: Arial, sans-serif; /* Set font family */
+        }
+
+        .container {
+            position: relative;
+            background-image: url('https://d14b9ctw0m6fid.cloudfront.net/ugblog/wp-content/uploads/2021/03/1986.png');
+            background-size: cover; /* Adjust background image size */
+            background-position: center;
+            width: 100vw; /* Fill full width of the viewport */
+            height: 60vh; /* Set height to 70% of viewport height */
+            border-radius: 10px;
+            overflow: hidden; /* Hide overflow content */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            top: -189px;
+            margin-bottom: 20px; /* Add margin to separate from the text */
+        }
+
+        button {
+            position: absolute; /* Position button absolutely within container */
+            bottom: 10px; /* Distance from the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            padding: 20px 40px; /* Increase padding for larger button */
+            font-size: 24px; /* Increase font size */
+            font-weight: bold; /* Set font weight to bold */
+            background-color: #7c0d0d; /* Light red color */
+            border: 2px solid #be1818; /* Red border */
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 350px;
+            transition: background-color 0.3s; /* Add transition for smooth color change */
+        }
+
+        button:hover {
+            background-color: #e91717; /* Dark red color on hover */
+        }
+
+        .text {
+            text-align: center; /* Center align the text */
+            font-size: 50px; /* Increase font size */
+            font-weight: bolder; /* Set font weight to bold */
+            color: #df1010; /* Set text color */
+            line-height: 1; /* Set line height for readability */
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: -150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="proceedButton">Proceed</button>
+    </div>
+    <div class="text">
+        <p>Predicting Heart Disease using Support Vector Machines</p>
+    </div>
+    <script>
+        document.getElementById('proceedButton').onclick = function() {
+            window.location.href = "{{ url_for('start') }}";
+        };
+    </script>
+
+
+</body>
+</html>

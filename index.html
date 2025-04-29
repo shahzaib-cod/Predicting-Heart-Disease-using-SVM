@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #c0392b; /* Reddish color */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #96281b; /* Darker reddish color */
+            padding: 0.5rem 0;
+        }
+        
+        .main-container {
+            display: flex;
+            max-width: 1800px;
+            margin: 0rem;
+            padding: 1rem;
+            align-items: flex-start; /* Align items to the top */
+        }
+        .image-container {
+            flex: 1;
+            padding: 0;
+            margin-left: 0px;
+            margin-right: 2rem; /* Add some space between the image and the form */
+            height: 500px; /* Set the height for the image container */
+        }
+        .image-container img {
+            width: 100%;
+            height: 215%;
+            object-fit: fill; /* Ensures the image covers the container */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            flex: 1; /* Set the width of the form container */
+            margin-right: -80px;
+            padding-right: 10px;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+            text-align: right;
+        }
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+            font-size: 14px; /* Reduced font size */
+        }
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        input[type="submit"] {
+            grid-column: 2 / 3;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        .result {
+            display: none; /* Initially hide the result divs */
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Heart Disease Prediction</h1>
+    </header>
+    
+    <div class="main-container">
+        <div class="image-container">
+            <img src="https://miro.medium.com/v2/resize:fit:640/1*UIOup_6QtddueH9VjaT8HQ.jpeg" alt="Heart Image">
+        </div>
+        <div class="form-container">
+            <form id="heartDiseaseForm" action="/predict" method="post">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age">
+                
+                <label for="sex">Sex:</label>
+                <input type="text" id="sex" name="sex">
+                
+                <label for="cp">Chest Pain Type:</label>
+                <input type="text" id="cp" name="cp">
+                
+                <label for="trestbps">Resting Blood Pressure:</label>
+                <input type="text" id="trestbps" name="trestbps">
+                
+                <label for="chol">Serum Cholesterol:</label>
+                <input type="text" id="chol" name="chol">
+                
+                <label for="fbs">Fasting Blood Sugar:</label>
+                <input type="text" id="fbs" name="fbs">
+                
+                <label for="restecg">Resting Electrocardiographic Results:</label>
+                <input type="text" id="restecg" name="restecg">
+                
+                <label for="thalach">Maximum Heart Rate Achieved:</label>
+                <input type="text" id="thalach" name="thalach">
+                
+                <label for="exang">Exercise Induced Angina:</label>
+                <input type="text" id="exang" name="exang">
+                
+                <label for="oldpeak">ST Depression Induced by Exercise:</label>
+                <input type="text" id="oldpeak" name="oldpeak">
+                
+                <label for="slope">Slope of the Peak Exercise ST Segment:</label>
+                <input type="text" id="slope" name="slope">
+                
+                <label for="ca">Number of Major Vessels Colored by Fluoroscopy:</label>
+                <input type="text" id="ca" name="ca">
+                
+                <label for="thal">Thalassemia:</label>
+                <input type="text" id="thal" name="thal">
+                <!-- Other form inputs omitted for brevity -->
+                
+                <input type="submit" value="Predict">
+            </form>
+            {% if prediction_text %}
+                <h2>{{ prediction_text }}</h2>
+                {% if prediction_text == "Heart Disease Prediction: 0" %}
+                <h3>Person has no heart disease.</h3>
+            {% else %}
+                <h3>Person has heart disease.</h3>
+        {% endif %}
+    {% endif %}
+
+        </div>
+    </div>
+
+    
+</body>
+</html>
